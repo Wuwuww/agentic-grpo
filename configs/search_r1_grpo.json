@@ -1,0 +1,45 @@
+{
+  "algorithm": {
+    "adv_estimator": "grpo",
+    "norm_adv_by_std_in_grpo": true,
+    "use_kl_in_reward": false
+  },
+  "actor_rollout_ref": {
+    "model": {
+      "name": "gpt-4o-mini",
+      "weight_update": "skipped"
+    },
+    "actor": {
+      "optim": {"lr": 0.6},
+      "ppo_epochs": 1,
+      "clip_ratio_low": 0.2,
+      "clip_ratio_high": 0.2,
+      "use_kl_loss": true,
+      "kl_loss_coef": 0.001,
+      "kl_loss_type": "low_var_kl",
+      "state_masking": true
+    },
+    "rollout": {
+      "name": "openai-compatible",
+      "n_agent": 5,
+      "temperature": 1.0
+    }
+  },
+  "policy": {
+    "search_rate": 0.05
+  },
+  "rollout": {
+    "max_turns": 3,
+    "topk": 3
+  },
+  "reward": {
+    "type": "exact_match",
+    "format_reward": false,
+    "retrieval_reward": false
+  },
+  "trainer": {
+    "total_epochs": 8,
+    "project_name": "search-r1",
+    "experiment_name": "oncall-runbook"
+  }
+}

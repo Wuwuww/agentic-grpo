@@ -1,0 +1,53 @@
+[
+  {
+    "id": "inc-checkout",
+    "alert": "checkout 5xx 升高",
+    "services": ["checkout", "payment", "inventory"],
+    "evidence": {
+      "query_logs:checkout": "upstream timeout while calling payment",
+      "query_metrics:checkout": "error rate 22%",
+      "query_logs:payment": "database connection pool exhausted",
+      "query_changes:payment": "schema migration finished 12 minutes ago",
+      "query_logs:inventory": "healthy"
+    },
+    "root_cause": "payment_pool",
+    "useful_tools": [["query_logs", "payment"]]
+  },
+  {
+    "id": "inc-login",
+    "alert": "login p99 升高",
+    "services": ["login", "cache"],
+    "evidence": {
+      "query_metrics:login": "p99 latency 8s",
+      "query_logs:login": "cache miss rate 99%",
+      "query_changes:login": "deploy 482 set cache ttl to 0",
+      "query_logs:cache": "hit rate collapsed after deploy 482"
+    },
+    "root_cause": "bad_deploy",
+    "useful_tools": [["query_changes", "login"]]
+  },
+  {
+    "id": "inc-search",
+    "alert": "search 超时",
+    "services": ["search"],
+    "evidence": {
+      "query_metrics:search": "qps increased 10x on one hot key",
+      "query_logs:search": "cache stampede, lock wait on hot key",
+      "query_changes:search": "no deploy in the last day"
+    },
+    "root_cause": "cache_stampede",
+    "useful_tools": [["query_logs", "search"]]
+  },
+  {
+    "id": "inc-disk",
+    "alert": "monitoring 写入失败",
+    "services": ["monitoring"],
+    "evidence": {
+      "query_metrics:monitoring": "disk used 99%",
+      "query_logs:monitoring": "no space left on device",
+      "query_changes:monitoring": "no recent change"
+    },
+    "root_cause": "disk_full",
+    "useful_tools": [["query_logs", "monitoring"]]
+  }
+]

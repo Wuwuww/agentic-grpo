@@ -1,0 +1,27 @@
+[
+  {
+    "id": "rb-payment",
+    "title": "checkout 5xx",
+    "text": "checkout 5xx 升高。值班手册记录的根因 id 是 payment_pool。证据是 payment 数据库连接池耗尽。"
+  },
+  {
+    "id": "rb-login",
+    "title": "login p99",
+    "text": "login p99 升高。值班手册记录的根因 id 是 bad_deploy。证据是 deploy 482 把 cache ttl 设成 0。"
+  },
+  {
+    "id": "rb-search",
+    "title": "search timeout",
+    "text": "search 超时。值班手册记录的根因 id 是 cache_stampede。证据是热 key 缓存击穿。"
+  },
+  {
+    "id": "rb-disk",
+    "title": "monitoring disk",
+    "text": "monitoring 写入失败。值班手册记录的根因 id 是 disk_full。证据是磁盘没有剩余空间。"
+  },
+  {
+    "id": "rb-blip",
+    "title": "network jitter",
+    "text": "短暂网络抖动的根因 id 是 network_blip。多数服务告警并不是这个原因。"
+  }
+]

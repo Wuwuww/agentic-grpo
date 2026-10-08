@@ -1,0 +1,27 @@
+[
+  {
+    "id": "q-checkout",
+    "question": "checkout 5xx 升高时，值班手册记录的根因 id 是什么？",
+    "golden_answers": ["payment_pool"]
+  },
+  {
+    "id": "q-login",
+    "question": "login p99 升高时，值班手册记录的根因 id 是什么？",
+    "golden_answers": ["bad_deploy"]
+  },
+  {
+    "id": "q-search",
+    "question": "search 超时时，值班手册记录的根因 id 是什么？",
+    "golden_answers": ["cache_stampede"]
+  },
+  {
+    "id": "q-disk",
+    "question": "monitoring 写入失败时，值班手册记录的根因 id 是什么？",
+    "golden_answers": ["disk_full"]
+  },
+  {
+    "id": "q-visible",
+    "question": "告警原文已经写明根因 id 是 network_blip。根因 id 是什么？",
+    "golden_answers": ["network_blip"]
+  }
+]
